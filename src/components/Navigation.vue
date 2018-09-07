@@ -11,7 +11,7 @@
 </template>
 
 <style scoped lang="scss">
-  
+
   .header {
     display: flex;
     flex-direction: column;
@@ -43,10 +43,23 @@
     text-decoration: none;
     color: #2c3e50;
     padding: 0 20px 10px;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      bottom: 0;
+      left: 10%;
+      border-bottom: 1px solid lightgrey;
+      transition: width 0.25s ease;
+    }
 
     &.router-link-exact-active {
       font-weight: bold;
-      border-bottom: 1px solid lightgrey;
+      &::after {
+        width: 80%;
+      }
     }
   }
 

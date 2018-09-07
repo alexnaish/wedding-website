@@ -17,13 +17,12 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-
+<style lang="scss">
   .heading {
     font-family: 'Dancing Script', cursive;
     font-size: 36px;
     text-align: center;
-    margin: 20px auto;
+    margin: 0 auto;
   }
 
 </style>

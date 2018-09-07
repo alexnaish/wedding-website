@@ -1,22 +1,28 @@
 <template>
   <div class="home">
     <Splash />
-    <RsvpSection />
-    <VenueSection />
+    <Section heading="RSVP" intro="We would love you to be there, please let us know as soon as possible! Szeretnénk, ha ott vagy, tudassa velünk a lehető leghamarabb!">
+      <Button text="RSVP" path="/rsvp" />
+    </Section>
+    <Section heading="Time &amp; Place / Részletek" intro="Something about two countries, two people, two celebrations. #SaraTheCopyWriter">
+      <GoogleMap />
+    </Section>
   </div>
 </template>
 
 <script>
-import Splash from '@/components/Splash.vue'
-import RsvpSection from '@/components/RsvpSection.vue'
-import VenueSection from '@/components/VenueSection.vue'
+import Splash from '@/components/Splash.vue';
+import Section from '@/components/Section.vue';
+import Button from '@/components/Button.vue';
+import GoogleMap from '@/components/GoogleMap.vue';
 
 export default {
   name: 'home',
   components: {
     Splash,
-    RsvpSection,
-    VenueSection
+    Section,
+		Button,
+		GoogleMap
   }
 }
 </script>

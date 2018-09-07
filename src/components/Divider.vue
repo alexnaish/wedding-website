@@ -4,12 +4,12 @@
 
 <script>
 export default {
-  name: 'Heading',
+  name: 'Divider',
   props: ['theme', 'narrow']
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   .divider {
     position: relative;
     width: 800px;
