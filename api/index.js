@@ -1,8 +1,14 @@
-module.exports.access = (event, context, callback) => {
-  callback(null, 'Access!');
+module.exports.access = async () => {
+  return {
+    statusCode: 200,
+    body: 'Access!'
+  };
 };
 
-module.exports.submission = (event, context, callback) => {
-  callback(null, 'Submission!');
+module.exports.submission = async () => {
+  return {
+    statusCode: 200,
+    body: 'Submission!'
+  };
 };
 
