@@ -19,12 +19,14 @@ functions:
       - http:
           path: /access
           method: post
+          cors: true
   form-submission:
     handler: index.submission
     events:
       - http:
           path: /submit
           method: post
+          cors: true
 
 plugins:
   - serverless-plugin-optimize
