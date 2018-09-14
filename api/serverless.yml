@@ -1,0 +1,30 @@
+service: wedding-website-api
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: eu-west-2
+  deploymentBucket: wedding-website-api
+  memorySize: 128
+  timeout: 8
+  environment: ${file(../env.yml)}
+
+package:
+  individually: true
+
+functions:
+  form-access:
+    handler: index.access
+    events:
+      - http:
+          path: /access
+          method: post
+  form-submission:
+    handler: index.submission
+    events:
+      - http:
+          path: /submit
+          method: post
+
+plugins:
+  - serverless-plugin-optimize
