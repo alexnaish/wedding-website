@@ -5,7 +5,6 @@
       <Button text="RSVP" path="/rsvp" />
     </Section>
     <Section heading="Time &amp; Place / Részletek" intro="Something about two countries, two people, two celebrations. #SaraTheCopyWriter">
-      <GoogleMap />
     </Section>
   </div>
 </template>
@@ -14,15 +13,13 @@
 import Splash from '@/components/Splash.vue';
 import Section from '@/components/Section.vue';
 import Button from '@/components/Button.vue';
-import GoogleMap from '@/components/GoogleMap.vue';
 
 export default {
   name: 'home',
   components: {
     Splash,
     Section,
-		Button,
-		GoogleMap
+		Button
   }
 }
 </script>
