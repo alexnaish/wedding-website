@@ -48,7 +48,7 @@ jobs:
             paths: '*'
     build:
       docker:
-        - image: circle/node:8.10.0
+        - image: circleci/node:8.10.0
       steps:
         - attach_workspace:
             at: .
