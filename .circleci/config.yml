@@ -71,4 +71,4 @@ jobs:
             at: .
         - run: aws s3 sync dist s3://wedding-website-frontend --region eu-west-2 --exclude "*" --include "*.html" --include "service-worker.js" --acl "public-read" --cache-control "max-age=0" --delete
         - run: aws s3 sync dist s3://wedding-website-frontend --region eu-west-2 --exclude "*" --include "*.ico" --include "*.txt" --acl "public-read" --cache-control "max-age=86400" --delete
-        - run: aws s3 sync dist s3://wedding-website-frontend --region eu-west-2 --exclude "*" --include "*app.*.js" --include "*app.*.css" --include "*.png" --include "*.otf" --acl "public-read" --cache-control "public, max-age=31536000" --delete
+        - run: aws s3 sync dist s3://wedding-website-frontend --region eu-west-2 --exclude "*" --include "*.*.js" --include "*.*.css" --include "*.png" --include "*.otf" --acl "public-read" --cache-control "public, max-age=31536000" --delete
