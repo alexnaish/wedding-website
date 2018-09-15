@@ -14,14 +14,21 @@ package:
 
 functions:
   form-access:
-    handler: index.access
+    handler: access.handler
     events:
       - http:
           path: /access
           method: post
           cors: true
+  form-validate:
+    handler: validate.handler
+    events:
+      - http:
+          path: /validate
+          method: get
+          cors: true
   form-submission:
-    handler: index.submission
+    handler: submission.handler
     events:
       - http:
           path: /submit
