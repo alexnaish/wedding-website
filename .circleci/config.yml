@@ -30,10 +30,13 @@ jobs:
         - image: cibuilds/aws:latest
       steps:
         - checkout
+        - run: aws s3 cp s3://naish-config-vars/${CIRCLE_PROJECT_REPONAME}/${CIRCLE_PROJECT_REPONAME}-production .env --region eu-west-2
         - run: aws s3 cp s3://naish-config-vars/${CIRCLE_PROJECT_REPONAME}/${CIRCLE_PROJECT_REPONAME}-production.yaml env.yml --region eu-west-2
         - persist_to_workspace:
             root: .
-            paths: env.yml
+            paths:
+              - .env
+              - env.yml
     test:
       docker:
         - image: circleci/node:8.10.0
