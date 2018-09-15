@@ -1,14 +1,20 @@
 module.exports.access = async () => {
   return {
     statusCode: 200,
-    body: 'Access!'
+    headers: {
+      'Access-Control-Allow-Origin': 'https://alexandsarawedding.co.uk'
+    },
+    body: JSON.stringify({ data: 'Access!' })
   };
 };
 
 module.exports.submission = async () => {
   return {
     statusCode: 200,
-    body: 'Submission!'
+    headers: {
+      'Access-Control-Allow-Origin': 'https://alexandsarawedding.co.uk'
+    },
+    body: JSON.stringify({ data: 'Submission!' })
   };
 };
 
