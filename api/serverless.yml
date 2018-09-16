@@ -35,5 +35,24 @@ functions:
           method: post
           cors: true
 
+resources:
+  Resources:
+    GuestsTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: code
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: code
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 3
+          WriteCapacityUnits: 3
+        TableName: ${self:provider.environment.GUESTS_TABLE}
+
 plugins:
   - serverless-plugin-optimize
