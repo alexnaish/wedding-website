@@ -6,14 +6,14 @@ module.exports.handler = async (event) => {
 
   try {
     let payload = JSON.parse(event.body);
-    const guest = Guest.find(payload.access_password);
+    const guest = await Guest.find(payload.access_password);
 
     return {
       statusCode: 200,
       headers: {
         'Access-Control-Allow-Origin': CORS_LOCATION
       },
-      body: JSON.stringify({ data: Token.generate({ id: guest.id, name: guest.name }) })
+      body: JSON.stringify({ data: guest && Token.generate({ code: guest.code, name: guest.name }) })
     };
 
   } catch (error) {

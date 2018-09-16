@@ -15,6 +15,7 @@ provider:
         - dynamodb:GetItem
         - dynamodb:PutItem
         - dynamodb:DeleteItem
+        - dynamodb:DescribeTable
       Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:*"
 
 package:
@@ -62,5 +63,5 @@ resources:
           WriteCapacityUnits: 3
         TableName: ${self:provider.environment.GUESTS_TABLE}
 
-# plugins:
-#   - serverless-plugin-optimize
+plugins:
+  - serverless-plugin-optimize

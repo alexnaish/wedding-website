@@ -1,10 +1,23 @@
-let Dynamo = require('dynasty')({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+const dynamoose = require('dynamoose');
+dynamoose.AWS.config.update({
+  accessKeyId: process.env.AWS_ACCESS_KEY,
+  secretAccessKey: process.env.AWS_SECRET_KEY,
   region: 'eu-west-2'
 });
 
-const Guest = Dynamo.table(process.env.GUESTS_TABLE);
+dynamoose.setDefaults({
+  create: false,
+  update: false,
+  prefix: 'wedding-'
+});
+
+let Guest = dynamoose.model('Guest', {
+  code: {
+    type: String,
+    hashKey: true
+  },
+  name: String
+});
 
 module.exports = {
   find: (id) => {
