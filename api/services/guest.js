@@ -6,22 +6,23 @@ dynamoose.AWS.config.update({
 });
 
 dynamoose.setDefaults({
-  create: false,
+  create: true,
   update: false,
+  waitForActive: false,
   prefix: 'wedding-'
 });
 
-let Guest = dynamoose.model('Guest', {
+let Guest = dynamoose.model('guests', {
   code: {
     type: String,
     hashKey: true
   },
   name: String
-});
+}, { timestamps: true });
 
 module.exports = {
   find: (id) => {
-    return Guest.find(id);
+    return Guest.get(id);
   },
   update: (id, payload) => {
     return Guest.update(id, payload);
