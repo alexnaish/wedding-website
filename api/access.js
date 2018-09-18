@@ -1,17 +1,19 @@
-const { Guest, Token } = require('./services/');
-const CORS_LOCATION = '*' || process.env.APP_URL;
+const { Guest, Token, Response } = require('./services/');
 
 module.exports.handler = async (event) => {
 
-  let payload = JSON.parse(event.body);
-  const guest = await Guest.find(payload.access_password);
+  let payload;
+  try {
+    payload = JSON.parse(event.body);
+  } catch (error) {
+    return Response.bad({ message: 'Invalid data!', error: 'invalid-data' });
+  }
 
-  return {
-    statusCode: 200,
-    headers: {
-      'Access-Control-Allow-Origin': CORS_LOCATION
-    },
-    body: JSON.stringify({ data: guest && Token.generate({ code: guest.code, name: guest.name }) })
-  };
+  const guest = await Guest.find(payload.access_password);
+  if (!guest) {
+    return Response.bad({ message: 'No record found!', error: 'no-guest-record' });
+  }
+
+  return Response.success(Token.generate({ code: guest.code, name: guest.name }));
 
 };

@@ -1,10 +1,6 @@
+const { Guest, Token, Response } = require('./services/');
+
 module.exports.handler = async () => {
-  return {
-    statusCode: 200,
-    headers: {
-      'Access-Control-Allow-Origin': 'https://alexandsarawedding.co.uk'
-    },
-    body: JSON.stringify({ data: 'Submission!' })
-  };
+  return Response.success('Success!');
 };
 
