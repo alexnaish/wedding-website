@@ -1,23 +1,24 @@
-const { Guest, Token } = require('./services/');
+const { Guest, Token, Response } = require('./services/');
 
 module.exports.handler = async (event) => {
 
   if (!event.queryStringParameters) {
-    throw new Error('No token parameter supplied!');
+    return Response.bad({ message: 'No token supplied!', error: 'no-token-supplied' });
   }
 
   const tokenDetails = Token.verify(event.queryStringParameters.token);
+  if (!tokenDetails) {
+    return Response.bad({ message: 'Invalid token supplied.', error: 'invalid-token' });
+  }
 
-  return {
-    statusCode: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*' || 'https://alexandsarawedding.co.uk'
-    },
-    body: JSON.stringify({
-      data: {
-        valid: !!tokenDetails,
-        content: tokenDetails
-      }
-    })
-  };
+  const guestData = tokenDetails && await Guest.find(tokenDetails.code);
+  if (!guestData) {
+    return Response.bad({ message: 'No record found!', error: 'no-guest-record' });
+  }
+
+  return Response.success({
+    guest: guestData,
+    issued: tokenDetails.iat * 1000 // * 1000 to put into ms
+  });
 };
+

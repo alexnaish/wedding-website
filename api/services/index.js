@@ -16,4 +16,5 @@ dynamoose.setDefaults({
 module.exports = {
   Guest: require('./guest'),
   Token: require('./token'),
+  Response: require('./response')
 };
