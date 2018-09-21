@@ -1,9 +1,9 @@
-const dynamoose = require('dynamoose');
+// const dynamoose = require('dynamoose');
 
-module.exports = dynamoose.model('guests', {
-  code: {
-    type: String,
-    hashKey: true
-  },
-  name: String
-}, { timestamps: true });
+// module.exports = dynamoose.model('guests', {
+//   code: {
+//     type: String,
+//     hashKey: true
+//   },
+//   name: String
+// }, { timestamps: true });
