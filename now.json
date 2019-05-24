@@ -1,0 +1,45 @@
+{
+  "version": 2,
+  "name": "wedding",
+  "public": false,
+  "alias": [
+    "alexandsarawedding.co.uk"
+  ],
+  "regions": [
+    "lhr1"
+  ],
+  "builds": [
+    {
+      "src": "frontend/next.config.js",
+      "use": "@now/next"
+    },
+    {
+      "src": "backend/**/*.js",
+      "use": "@now/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "^/service-worker.js$",
+      "dest": "/frontend/_next/static/service-worker.js",
+      "headers": {
+        "cache-control": "public, max-age=43200, immutable",
+        "Service-Worker-Allowed": "/"
+      }
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/backend/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/$1",
+      "headers": {
+        "cache-control": "s-maxage=31536000, maxage=0, stale-while-revalidate"
+      }
+    }
+  ],
+  "env": {
+    "MONGODB_ATLAS_URI": "@mongodb-atlas-uri"
+  }
+}

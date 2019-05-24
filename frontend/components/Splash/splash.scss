@@ -1,0 +1,79 @@
+.splash {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 600px;
+    margin: 0 auto;
+    background: url(/static/images/morocco.jpg) no-repeat center 70%;
+    background-size: cover;
+    
+    &--ireland {
+      background-image: url(/static/images/ireland.jpeg);
+    }
+
+    &--sweden {
+      background-image: url(/static/images/sweden.jpeg);
+    }
+
+    &::before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-color: #ebc064;
+      opacity: 0.1;
+  }
+
+    &::after {
+      content: "";
+      width: 100%;
+      height: 240px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background-image: url(/static/images/divider.png);
+      background-repeat: repeat-x;
+      background-position: top center;
+      background-size: cover;
+      z-index: 0;
+    }
+
+  }
+
+  .splash__title {
+    position: relative;
+    font-family: 'Dancing Script', cursive;
+    width: 80%;
+    font-size: 8vw;
+    font-weight: 400;
+    text-align: center;
+    margin: 0 auto;
+    color: white;
+    text-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
+  }
+
+  @media only screen and (min-width: 1800px) {
+    .splash {
+      background: url(/static/images/blurred-background-close-up.jpg) no-repeat center 80%;
+      &::before {
+        opacity: 0.5;
+      }
+      &::after {
+        background-position-y: center;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    .splash {
+      height: 450px;
+    }
+
+    .splash__title {
+      font-size: 36px;
+    }
+  }

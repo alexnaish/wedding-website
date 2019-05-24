@@ -1,0 +1,20 @@
+.footer {
+  display: block;
+  width: 100%;
+  height: 60px;
+  padding: 20px;
+  background: #262a33;
+  color: white;
+  text-align: center;
+
+  &__heart {
+    display: inline-block;
+    transition: transform 0.5s ease, margin 0.5s ease;
+  }
+
+  &:hover &__heart {
+    transform: scale(3);
+    margin: 0 10px;
+  }
+
+}
