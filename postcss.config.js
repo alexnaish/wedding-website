@@ -1,7 +1,8 @@
 module.exports = {
   plugins: {
     autoprefixer: {
-      browsers: ['>5%']
+      browsers: ['>5%'],
+      flexbox: true
     }
   }
 };
