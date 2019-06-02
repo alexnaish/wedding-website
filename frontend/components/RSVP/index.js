@@ -73,14 +73,14 @@ export default () => {
   const [submitted, updateSubmission] = useState(false);
 
   const submit = async (values, form) => {
+		form.setStatus('')
     try {
       await rsvp.update(values);
+			updateSubmission(true);
     } catch (error) {
-      console.error('error', error);
-      errors.code = 'Failed to retrieve details!';
+			form.setStatus('Failed to save details!')
     }
-    form.setSubmitting(false);
-    updateSubmission(true);
+		form.setSubmitting(false);
   };
 
   return (

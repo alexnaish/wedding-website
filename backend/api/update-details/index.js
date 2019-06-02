@@ -7,12 +7,8 @@ app.put('*', async (req, res) => {
   try {
     const client = await database.connect();
     const Rsvp = await database.loadModel(client, 'Rsvp', RsvpSchema);
-
-    const res = await Rsvp.updateOne({ code: req.body.code }, { $set: req.body });
-    console.log('==================');
-    console.log('res', res);
-    console.log('==================');
-    const success = res.n === 1;
+    const result = await Rsvp.updateOne({ _id: req.body._id }, { $set: req.body });
+    const success = result.n === 1;
     res.status(success ? 200 : 404).json({
       data: success ? 'success!' : 'missing'
     });

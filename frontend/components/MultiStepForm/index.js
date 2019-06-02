@@ -57,8 +57,9 @@ export default ({ children, schema, initialValues, onChange, onSubmit }) => {
       enableReinitialize={true}
       validate={validate}
       onSubmit={handleSubmit}
-      render={({ isSubmitting }) => (
+      render={({ status, isSubmitting }) => (
         <Form className={`form${isSubmitting ? ' form--submitting': ''}`}>
+					{ status && <div className="form__error">{status}</div>}
           {steps.map((child, index) => {
             return React.cloneElement(child, {
               key: index,
