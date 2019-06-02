@@ -10,9 +10,8 @@ app.get('*', async (req, res) => {
 
     const result = await Rsvp.findOne({ code: req.query.code });
 
-    res.json({
-      message: result ? 'found' : 'nope',
-      result
+    res.status(result ? 200 : 404).json({
+      data: result
     });
   } catch (error) {
     console.error('access-details', error);

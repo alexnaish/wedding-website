@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import throttle from 'lodash/throttle';
+import { Fragment, useState } from 'react';
 
 import Heading from '../Heading';
 import MultiStepForm, { Step, Input, Radio } from '../MultiStepForm';
@@ -28,41 +27,45 @@ const RsvpForm = ({ handleSubmit }) => {
     }
     try {
       const result = await rsvp.access(code);
-      console.log('==================');
-      console.log('result', result);
-      console.log('==================');
+      updateState(result.data);
     } catch (error) {
       errors.code = 'Failed to retrieve details!';
     }
-
     if (Object.keys(errors).length) {
       throw errors;
     }
   };
 
+  const handleAttendanceChange = val => {
+    const newState = Object.assign({}, state, { attendance: val });
+    updateState(newState);
+  };
+
   return (
-    <MultiStepForm initialValues={initialValues} schema={RsvpSchema} onChange={updateState} onSubmit={handleSubmit}>
-      <Step validate={validateCode}>
-        <Input label="What is your RSVP code?" name="code" placeholder="Hint: Its on your invite!" />
-      </Step>
-      <Step>
-        <Radio label="Will you be attending?" name="attendance" options={[
-          {
-            label: 'Yes!',
-            value: true
-          },
-          {
-            label: 'No :(',
-            value: false
-          }
-        ]} />
-      </Step>
-      {
-        state.attendance && <Step>
-          <Input label="Do you have any dietary issues?" name="diet" placeholder="e.g. I don't like desserts so give mine to Alex..." />
+    <Fragment>
+      <MultiStepForm initialValues={state} onChange={updateState} schema={RsvpSchema} onSubmit={handleSubmit}>
+        <Step validate={validateCode}>
+          <Input label="What is your RSVP code?" name="code" placeholder="Hint: Its on your invite!" />
         </Step>
-      }
-    </MultiStepForm>
+        <Step>
+          <Radio label="Will you be attending?" name="attendance" onChange={handleAttendanceChange} options={[
+            {
+              label: 'Yes!',
+              value: true
+            },
+            {
+              label: 'No :(',
+              value: false
+            }
+          ]} />
+        </Step>
+        {
+          state.attendance && <Step>
+            <Input label="Do you have any dietary issues?" name="diet" placeholder="e.g. I don't like desserts so give mine to Alex..." />
+          </Step>
+        }
+      </MultiStepForm>
+    </Fragment>
   );
 };
 

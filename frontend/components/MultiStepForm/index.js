@@ -1,11 +1,11 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, FastField, ErrorMessage } from 'formik';
 
 import './multiStepForm.scss';
 
 export default ({ children, schema, initialValues, onChange, onSubmit }) => {
   const [state, updateState] = useState({
-    page: 0,
+    page: initialValues._id ? 1 : 0,
     values: initialValues
   });
   const steps = React.Children.toArray(children).filter(Boolean);
@@ -25,7 +25,6 @@ export default ({ children, schema, initialValues, onChange, onSubmit }) => {
   };
 
   const validate = async (values) => {
-    onChange && onChange(values);
     return await activePage.props.validate ? activePage.props.validate(values) : schema.validate(values);
   };
 
@@ -55,7 +54,7 @@ export default ({ children, schema, initialValues, onChange, onSubmit }) => {
       initialValues={initialValues}
       validateOnBlur={false}
       validateOnChange={false}
-      enableReinitialize={false}
+      enableReinitialize={true}
       validate={validate}
       onSubmit={handleSubmit}
       render={({ isSubmitting }) => (
@@ -112,22 +111,22 @@ export const Input = ({ name, type = 'text', label, placeholder }) => {
 };
 
 export const DynamicOption = (props) => {
-  const { field, form, value, label } = props;
+  const { field, form, label, value } = props;
   const id = `${field.name}-${value}`;
-  const checked = form.values[field.name] === value;
-  const handleChange = () => {
+  const onChange = () => {
     form.setFieldValue(field.name, value);
-    form.submitForm();
+    props.onChange && props.onChange(value);
   };
+
   return (
     <div className="dynamic-option">
-      <FastField className="dynamic-option__input" id={id} type="radio" name={field.name} checked={checked} onChange={handleChange} />
+      <input className="dynamic-option__input" id={id} type="radio" name={field.name} onClick={onChange} onBlur={field.onBlur} value={value} defaultChecked={form.values[field.name] === value} />
       <label htmlFor={id} className="dynamic-option__label">{label}</label>
     </div>
   );
 };
 
-export const Radio = ({ name, label, options = [] }) => {
+export const Radio = ({ name, label, options = [], onChange }) => {
   return (
     <div className="form__row">
       <label className="form__label">{label}</label>
@@ -141,6 +140,7 @@ export const Radio = ({ name, label, options = [] }) => {
                 label={opt.label}
                 value={opt.value}
                 component={DynamicOption}
+                onChange={onChange}
               />
             );
           })
