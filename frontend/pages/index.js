@@ -3,6 +3,6 @@ import Section from '../components/Section';
 
 export default () => <div>
   <Splash />
-  <Section heading="RSVP" intro="We would love you to be there, please let us know as soon as possible! Szeretnénk, ha ott vagy, tudassa velünk a lehető leghamarabb!" />
-  <Section heading="Information" intro="We would love you to be there, please let us know as soon as possible! Szeretnénk, ha ott vagy, tudassa velünk a lehető leghamarabb!" />
+  <Section heading="England - 12th April 2020" intro="Welcome to our wedding website!" />
+  <Section heading="Magyarország - 2020 Május 2." intro="Köszöntünk az esküvői weboldalunkon!" />
 </div>;
