@@ -7,8 +7,8 @@ app.get('*', async (req, res) => {
   try {
     const client = await database.connect();
     const Rsvp = await database.loadModel(client, 'Rsvp', RsvpSchema);
-
-    const result = await Rsvp.findOne({ code: req.query.code });
+    const code = req.query.code ? req.query.code.toLowerCase() : 'MISSING!';
+    const result = await Rsvp.findOne({ code });
 
     res.status(result ? 200 : 404).json({
       data: result
