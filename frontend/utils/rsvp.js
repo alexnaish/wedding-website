@@ -2,7 +2,7 @@ import fetch from 'unfetch';
 
 export default {
   access: async (code) => {
-    return await fetch(`/api/access-details?code=${code}`)
+    return await fetch(`/api/access-details?code=${(code || '').toLowerCase()}`)
       .then(res => {
         if (!res.ok) {
           throw Error(res.text);
