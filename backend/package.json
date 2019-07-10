@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.0",
-    "mongoose": "^5.5.10",
-    "nodemailer": "^6.2.1"
+    "mailgun-js": "^0.22.0",
+    "mongoose": "^5.5.10"
   }
 }

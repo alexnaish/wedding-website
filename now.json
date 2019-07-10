@@ -41,7 +41,7 @@
   ],
   "env": {
     "MONGODB_ATLAS_URI": "@mongodb-atlas-uri",
-    "EMAIL_ACCOUNT": "@email_account",
-    "EMAIL_PASSWORD": "@email_password"
+    "EMAIL_API_KEY": "@email_api_key",
+    "EMAIL_DOMAIN": "@email_domain"
   }
 }
