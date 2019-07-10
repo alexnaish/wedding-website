@@ -10,7 +10,7 @@ app.get('*', async (req, res) => {
     const code = req.query.code ? req.query.code.toLowerCase() : 'MISSING!';
     const { _id, attendance, diet } = await Rsvp.findOne({ code });
 
-    res.status(result ? 200 : 404).json({
+    res.status(_id ? 200 : 404).json({
       data: { _id, attendance, diet }
     });
   } catch (error) {
