@@ -6,7 +6,7 @@ app.post('*', async (req, res) => {
 
 		const mg = mailgun({apiKey: process.env.EMAIL_API_KEY, domain: process.env.EMAIL_DOMAIN });
 		const data = {
-			from: 'Wedding Website <lexi.drage@gmail.com>',
+			from: 'Wedding Website <changes@alexandsarawedding.co.uk>',
 			to: 'lexi.drage@gmail.com, sz.sacka@gmail.com',
 			subject: 'RSVP Change Notification',
 			html: `An RSVP record has changed. <p>${JSON.stringify(req.body)}</p>`
