@@ -7,11 +7,11 @@ app.get('*', async (req, res) => {
   try {
     const client = await database.connect();
     const Rsvp = await database.loadModel(client, 'Rsvp', RsvpSchema);
-    const code = req.query.code ? req.query.code.toLowerCase() : 'MISSING!';
-    const { _id, attendance, diet } = await Rsvp.findOne({ code });
+    const codeValue = req.query.code ? req.query.code.toLowerCase() : 'MISSING!';
+    const { _id, code, attendance, diet } = await Rsvp.findOne({ code: codeValue });
 
     res.status(_id ? 200 : 404).json({
-      data: { _id, attendance, diet }
+      data: { _id, code, attendance, diet }
     });
   } catch (error) {
     console.error('access-details', error);
