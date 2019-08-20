@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sentry/browser": "^5.6.2",
     "formik": "^1.5.7",
     "lodash": "^4.17.11",
     "next": "^8.1.0",

@@ -1,4 +1,5 @@
 import App, { Container } from 'next/app';
+import * as Sentry from '@sentry/browser';
 
 import Application from '../components/App';
 import Navigation from '../components/Navigation';
@@ -13,6 +14,10 @@ class MyApp extends App {
     }
 
     return { pageProps };
+  }
+
+  componentWillMount() {
+    Sentry.init({ dsn: process.env.SENTRY_DSN });
   }
 
   render() {
