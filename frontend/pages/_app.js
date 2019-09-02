@@ -5,7 +5,16 @@ import Application from '../components/App';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 
+import CountryContext from '../contexts/country';
+import { fetchCountry } from '../utils/country';
+
 class MyApp extends App {
+
+	constructor() {
+		super();
+		this.state = {};
+	}
+
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
 
@@ -17,20 +26,30 @@ class MyApp extends App {
   }
 
   componentWillMount() {
-    Sentry.init({ dsn: process.env.SENTRY_DSN });
-  }
+		Sentry.init({ dsn: process.env.SENTRY_DSN });
+	}
+
+	async componentDidMount() {
+		const { countryCode } = await fetchCountry();
+		this.setState({
+			countryCode
+		});
+	}
 
   render() {
+    const { countryCode } = this.state;
     const { Component, pageProps } = this.props;
 
     return (
       <Application>
         <Container>
-          <Navigation />
-          <main className="app-content">
-            <Component {...pageProps} />
-          </main>
-          <Footer />
+					<CountryContext.Provider value={countryCode}>
+						<Navigation />
+						<main className="app-content">
+							<Component {...pageProps} />
+						</main>
+						<Footer />
+					</CountryContext.Provider>
         </Container>
       </Application>
     );
