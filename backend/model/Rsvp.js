@@ -15,6 +15,9 @@ const RsvpSchema = new mongoose.Schema({
   },
   diet: {
     type: String
+  },
+  lastChanged: {
+    type: String
   }
 });
 
