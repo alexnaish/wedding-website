@@ -1,5 +1,7 @@
 import './venue.scss';
 
+import Internationalised from '../Internationalised';
+
 const getAddress = (location) => {
   switch (location) {
     case 'england':
@@ -41,10 +43,10 @@ export default ({ location }) => {
     <div className="venue">
       <div className="venue__info">
         <div className="venue__info-details">
-          <strong>Address:</strong> {information.address}
+          <strong><Internationalised word="address" />:</strong> {information.address}
         </div>
         <div className="venue__info-details">
-          <strong>Website:</strong> <a href={information.website}>{information.website}</a>
+          <strong><Internationalised word="website" />:</strong> <a href={information.website}>{information.website}</a>
         </div>
       </div>
       <div className="venue__map">

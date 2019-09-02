@@ -5,15 +5,44 @@ const dictionary = {
 		hungary: 'Hungary',
 		gifts: 'Gifts',
 		rsvp: 'RSVP',
-		welcome: 'We\'re getting married!'
+		welcome: 'We\'re getting married!',
+		address: 'Address',
+		website: 'Website',
+		hungarianVenue: 'Hungarian Venue',
+		englishVenue: 'English Venue',
+		poem: [
+			'We know it’s not traditional',
+			'And it’s not the way it’s done,',
+			'But rather than a wedding list',
+			'We’d love a bit of sun.',
+			'',
+			'So if you\'d like to give a gift',
+			'and send us on our way,',
+			'a donation to our honeymoon',
+			'would really make our day.'
+		]
 	},
 	HU: {
 		home: 'Home',
 		england: 'Anglia',
 		hungary: 'Magyarország',
-		gifts: 'Ajándékok',
+		gifts: 'Ajándék',
 		rsvp: 'RSVP',
-		welcome: 'Összeházasodunk!'
+		welcome: 'Összeházasodunk!',
+		address: 'Cím',
+		website: 'Weboldal',
+		hungarianVenue: 'Magyar Helyszín',
+		englishVenue: 'Angol Helyszín',
+		poem: [
+			'Aki a nászunkra szép ajándékot adna,',
+			'a reánk szánt összeget tegye borítékba:',
+			'A legtöbbet ugyanis ez jelenti nékünk,',
+			'mert bizony messzire húz minket a szívünk!',
+			'Távoli vidékre, romantikus tájra,',
+			'feledhetetlen kalandra, álmaink nászútjára!',
+			'Szívből köszönünk hát minden kilométert,',
+			'mit ajándékotokból együtt teszünk majd meg!'
+		]
 	}
 };
 

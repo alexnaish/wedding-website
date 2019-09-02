@@ -3,7 +3,9 @@ import { useContext, memo } from 'react';
 import CountryContext from '../../contexts/country';
 import getLocaleWord from '../../utils/locales';
 
-export default memo(({ word }) => {
+const NOOP = (val) => val;
+
+export default memo(({ word, transform = NOOP }) => {
 	const countryCode = useContext(CountryContext);
-  return getLocaleWord(word, countryCode);
+  return transform(getLocaleWord(word, countryCode));
 });
