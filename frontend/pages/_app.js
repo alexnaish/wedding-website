@@ -6,7 +6,7 @@ import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 
 import CountryContext from '../contexts/country';
-import { fetchCountry } from '../utils/country';
+import { fetchCountry } from '../utils/locales';
 
 class MyApp extends App {
 
