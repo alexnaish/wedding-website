@@ -15,6 +15,9 @@ const config = {
         handler: 'CacheFirst'
       }
     ],
+	},
+	env: {
+    SENTRY_DSN: process.env.SENTRY_DSN
   }
 };
 

@@ -25,11 +25,9 @@ class MyApp extends App {
     return { pageProps };
   }
 
-  componentWillMount() {
-		Sentry.init({ dsn: process.env.SENTRY_DSN });
-	}
-
 	async componentDidMount() {
+		Sentry.init({ dsn: process.env.SENTRY_DSN });
+
 		const { countryCode } = await fetchCountry();
 		this.setState({
 			countryCode

@@ -38,12 +38,16 @@
         "cache-control": "s-maxage=31536000, maxage=0, stale-while-revalidate"
       }
     }
-  ],
+	],
+	"build": {
+		"env": {
+			"SENTRY_DSN": "@sentry_dsn"
+		}
+	},
   "env": {
     "MONGODB_ATLAS_URI": "@mongodb-atlas-uri",
     "EMAIL_API_KEY": "@email_api_key",
     "EMAIL_DOMAIN": "@email_domain",
-    "EMAIL_RECIPIENTS": "@email_recipients",
-    "SENTRY_DSN": "@sentry_dsn"
+    "EMAIL_RECIPIENTS": "@email_recipients"
   }
 }
