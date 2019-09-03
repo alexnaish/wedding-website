@@ -1,3 +1,5 @@
+import fetch from 'unfetch';
+
 const dictionary = {
 	GB: {
 		home: 'Home',
