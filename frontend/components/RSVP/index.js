@@ -45,23 +45,23 @@ const RsvpForm = ({ handleSubmit }) => {
     <Fragment>
       <MultiStepForm initialValues={state} onChange={updateState} schema={RsvpSchema} onSubmit={handleSubmit}>
         <Step validate={validateCode}>
-          <Input label="What is your RSVP code?" name="code" placeholder="Hint: Its on your invite!" />
+          <Input label="rsvpCodeLabel" name="code" />
         </Step>
         <Step>
-          <Radio label="Will you be attending?" name="attendance" onChange={handleAttendanceChange} options={[
+          <Radio label="rsvpAttendingLabel" name="attendance" onChange={handleAttendanceChange} options={[
             {
-              label: 'Yes!',
+              label: 'rsvpYes',
               value: true
             },
             {
-              label: 'No :(',
+              label: 'rsvpNo',
               value: false
             }
           ]} />
         </Step>
         {
           state.attendance && <Step>
-            <Input label="Do you have any dietary issues?" name="diet" placeholder="e.g. I don't like desserts so give mine to Alex..." />
+            <Input label="rsvpDietLabel" name="diet" />
           </Step>
         }
       </MultiStepForm>

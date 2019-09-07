@@ -4,13 +4,14 @@ import Divider from '../components/Divider';
 import Section from '../components/Section';
 import Internationalised from '../components/Internationalised';
 
+const poemTransformer = val => val.map((line, index) => line ? <p key={index}>{line}</p> : <br key={index} />);
+
 export default () => {
 	return (
 		<Section heading={<Internationalised word="gifts" />} textAlign="center">
-			<Internationalised word="poem" transform={val => val.map((line, index) => line ? <p key={index}>{line}</p> : <br key={index} />)} />
+			<Internationalised word="poem" transform={poemTransformer} />
 			<Divider theme="dark" narrow={true} />
-			<p>Just remember, what means the most</p>
-			<p>Is that you're here with us to a raise a toast!</p>
+			<Internationalised word="poemFinal" transform={poemTransformer} />
 		</Section>
 	);
 };

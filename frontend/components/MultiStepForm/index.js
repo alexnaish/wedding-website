@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Formik, Form, FastField, ErrorMessage } from 'formik';
 
+import Internationalised from '../Internationalised/';
+
 import './multiStepForm.scss';
 
 export default ({ children, schema, initialValues, onChange, onSubmit }) => {
@@ -87,7 +89,7 @@ export const Step = ({ children, previous, current, next, isSubmitting, onPrevio
       {children}
       {previous && <button className="form__trigger" data-submitting={isSubmitting} type="button" onClick={previous && !isSubmitting ? onPrevious : ()=>{}} />}
       <span className="form__instructions">
-        <button type="submit" tabIndex="-1" className="form__button" disabled={isSubmitting}>{!isLastPage ? 'Next' : 'Confirm'}</button> (or press enter)
+        <button type="submit" tabIndex="-1" className="form__button" disabled={isSubmitting}><Internationalised word={!isLastPage ? 'rsvpNext' : 'rsvpConfirm'} /></button>
       </span>
     </div>
   );
@@ -96,12 +98,11 @@ export const Step = ({ children, previous, current, next, isSubmitting, onPrevio
 export const Input = ({ name, type = 'text', label, placeholder }) => {
   return (
     <div className="form__row">
-      <label className="form__label">{label}</label>
+      <label className="form__label"><Internationalised word={label} /></label>
       <FastField
         name={name}
         type={type}
         component="input"
-        placeholder={placeholder}
         className="form__input"
         autoComplete="off"
         tabIndex="-1"
@@ -122,7 +123,7 @@ export const DynamicOption = (props) => {
   return (
     <div className="dynamic-option">
       <input className="dynamic-option__input" id={id} type="radio" name={field.name} onClick={onChange} onBlur={field.onBlur} value={value} defaultChecked={form.values[field.name] === value} />
-      <label htmlFor={id} className="dynamic-option__label">{label}</label>
+      <label htmlFor={id} className="dynamic-option__label"><Internationalised word={label} /></label>
     </div>
   );
 };
@@ -130,7 +131,7 @@ export const DynamicOption = (props) => {
 export const Radio = ({ name, label, options = [], onChange }) => {
   return (
     <div className="form__row">
-      <label className="form__label">{label}</label>
+      <label className="form__label"><Internationalised word={label} /></label>
       <div className="form__input">
         {
           options.map(opt => {

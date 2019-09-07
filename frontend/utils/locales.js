@@ -22,7 +22,20 @@ const dictionary = {
 			'and send us on our way,',
 			'a donation to our honeymoon',
 			'would really make our day.'
-		]
+		],
+		poemFinal: [
+			'Just remember, what means the most',
+			'Is that you\'re here with us to a raise a toast!'
+		],
+		rsvpYes: 'Yes',
+		rsvpNo: 'No :(',
+		rsvpNext: 'Next',
+		rsvpConfirm: 'Confirm',
+		rsvpCodeLabel: 'What is your RSVP code?',
+		rsvpCodeHint: 'Hint: Its on your invite!',
+		rsvpAttendingLabel: 'Will you be attending?',
+		rsvpDietLabel: 'Do you have any dietary issues?',
+		rsvpDietHint: 'e.g. I don\'t like desserts so give mine to Alex...',
 	},
 	HU: {
 		home: 'Home',
@@ -44,7 +57,20 @@ const dictionary = {
 			'feledhetetlen kalandra, álmaink nászútjára!',
 			'Szívből köszönünk hát minden kilométert,',
 			'mit ajándékotokból együtt teszünk majd meg!'
-		]
+		],
+		poemFinal: [
+			'A legfontosabb számunkra az,',
+			'hogy ott legyél és érezd jól magad.'
+		],
+		rsvpYes: 'Igen',
+		rsvpNo: 'Nem :(',
+		rsvpNext: 'Következő',
+		rsvpConfirm: 'Megerősít',
+		rsvpCodeLabel: 'Mi az RSVP Kódod?',
+		rsvpCodeHint: 'Ezt a meghívón talälod',
+		rsvpAttendingLabel: 'Ott leszel?',
+		rsvpDietLabel: 'Tudsz enni valamit?',
+		rsvpDietHint: ''
 	}
 };
 
