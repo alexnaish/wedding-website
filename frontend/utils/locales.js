@@ -69,7 +69,7 @@ const dictionary = {
 		rsvpCodeLabel: 'Mi az RSVP Kódod?',
 		rsvpCodeHint: 'Ezt a meghívón talälod',
 		rsvpAttendingLabel: 'Ott leszel?',
-		rsvpDietLabel: 'Tudsz enni valamit?',
+		rsvpDietLabel: 'Van valami allergiád?',
 		rsvpDietHint: ''
 	}
 };
