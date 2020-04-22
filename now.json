@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "name": "wedding",
   "public": false,
   "alias": [
     "alexandsarawedding.co.uk"
@@ -14,7 +13,7 @@
       "use": "@now/next"
     },
     {
-      "src": "backend/**/*.js",
+      "src": "backend/api/**/*.js",
       "use": "@now/node"
     }
   ],
@@ -38,12 +37,12 @@
         "cache-control": "s-maxage=31536000, maxage=0, stale-while-revalidate"
       }
     }
-	],
-	"build": {
-		"env": {
-			"SENTRY_DSN": "@sentry_dsn"
-		}
-	},
+  ],
+  "build": {
+    "env": {
+      "SENTRY_DSN": "@sentry_dsn"
+    }
+  },
   "env": {
     "MONGODB_ATLAS_URI": "@mongodb-atlas-uri",
     "EMAIL_API_KEY": "@email_api_key",

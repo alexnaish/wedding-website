@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 module.exports = {
   connect: async () => {
-		mongoose.set('useCreateIndex', true);
-		return await mongoose.createConnection(
+    mongoose.set('useCreateIndex', true);
+    return await mongoose.createConnection(
       process.env.MONGODB_ATLAS_URI,
       {
         bufferCommands: false,
